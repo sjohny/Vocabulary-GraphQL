@@ -25,26 +25,24 @@ class TranslationCreate extends Component {
   render(){
     return(
       <div>
-        <label>Add Translations</label>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            English:
-            <input
-              name="english"
-              type="input"
-              value={this.state.english}
-              onChange={event => this.setState({english: event.target.value})} />
-          </label>
-          <label>
-            Svenska:
-            <input
-              name="svenska"
-              type="input"
-              value={this.state.svenska}
-              onChange={event => this.setState({svenska: event.target.value})} />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
+        <h6>Add Translations</h6>
+        <div className="row">
+          <form onSubmit={this.handleSubmit} className="col s6">
+            <div className="input-field">
+              <input
+                placeholder="English"
+                value={this.state.english}
+                onChange={e => this.setState({ english: e.target.value })} />
+            </div>
+            <div className="input-field">
+              <input
+                placeholder="Swedish"
+                value={this.state.svenska}
+                onChange={e => this.setState({ svenska: e.target.value })} />
+            </div>
+            <button className="btn">Submit</button>
+          </form>
+        </div>
       </div>
     );
   }

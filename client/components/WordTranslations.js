@@ -13,9 +13,9 @@ class WordTranslations extends Component {
 
     return (
       <div>
-        <Link to="/">Back</Link>
-        <h3> Words and Translations</h3>
-        <h4>{category.title}</h4>
+        <Link to="/dashboard">Back</Link>
+        <h6> Associated words and translations</h6>
+        <label>{category.title}</label>
         <TranslationList words={category.words}/>
         <TranslationCreate categoryId={this.props.params.id}/>
       </div>

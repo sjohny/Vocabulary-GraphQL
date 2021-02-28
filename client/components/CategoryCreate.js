@@ -18,20 +18,23 @@ class CategoryCreate extends Component {
     this.props.mutate({
       variables: {title: this.state.title},
       refetchQueries: [{ query }]
-    }).then(() => hashHistory.push('/'))
+    }).then(() => hashHistory.push('/dashboard'))
   }
 
   render () {
     return (
-      <div>
-        <Link to="/">Back</Link>
-        <h3>Create a new Category</h3>
-        <form onSubmit={this.onSubmit.bind(this)}>
-          <label>Category Title:</label>
-          <input
-            onChange={event => this.setState({title: event.target.value})}
-            value={this.state.title}
-          />
+      <div className="row">
+        <Link to="/dashboard">Back</Link>
+        <h5>Create a new Category</h5>
+        <form onSubmit={this.onSubmit.bind(this)} className="col s6">
+          <div className="input-field">
+            <input
+              placeholder="Category title"
+              onChange={event => this.setState({title: event.target.value})}
+              value={this.state.title}
+            />
+          </div>
+          <button className="btn">Submit</button>
         </form>
       </div>
     );

@@ -3,12 +3,19 @@ const graphql = require('graphql');
 const { GraphQLObjectType, GraphQLList, GraphQLID, GraphQLNonNull } = graphql;
 const CategoryType = require('./category_type');
 const WordType = require('./word_type');
+const UserType = require('./user_type');
 const Word = mongoose.model('word');
 const Category = mongoose.model('category');
 
-const RootQuery = new GraphQLObjectType({
+const RootQueryType = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: () => ({
+    user: {
+      type: UserType,
+      resolve(parentValue, args, req) {
+        return req.user;
+      }
+    },
     categories: {
       type: new GraphQLList(CategoryType),
       resolve() {
@@ -32,4 +39,4 @@ const RootQuery = new GraphQLObjectType({
   })
 });
 
-module.exports = RootQuery;
+module.exports = RootQueryType;
